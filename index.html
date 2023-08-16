@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Karma</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💫</text></svg>">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>Karma</b>: Adaptive Video Streaming  <br> via Causal Sequence Modeling</br>
+                <small>
+								<!-- CVPR 2022 (Oral Presentation) -->
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a>
+                          Bowei Xu
+                        </a>
+                        </br>Nanjing University
+                    </li>
+
+                    <li>
+                        <a href="https://vision.nju.edu.cn/84/d8/c29470a492760/page.htm">
+                          Hao Chen
+                        </a>
+                        </br>Nanjing University
+                    </li>
+                    <li>
+                        <a href="https://vision.nju.edu.cn/fc/d3/c29470a457939/page.htm">
+                          Zhan Ma
+                        </a>
+                        </br>Nanjing University
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="ACMMM23_camera_ready_mmfp2124_Karma.pdf">
+                            <image src="img/karma-paper.jpg" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/fcbw2012/Karma">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <br><div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <img src="img/karma_existing_schemes.png" height="140px">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-center">
+                    Existing schemes via observation-to-action mapping.
+                </p>
+            </div>
+        </div></br>
+
+        <div class="row">
+            <div class="text-center">
+                <img src="img/karma_core_idea.png" height="160px">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-center">
+                    Karma's core idea: causal sequence modeling
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <h3>
+                    Abstract
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-justify">
+                    Optimal adaptive bitrate (ABR) decision depends on a comprehensive characterization of state
+                    transitions that involve interrelated modalities over time including environmental observations,
+                    returns, and actions. However, state-of-the-art learning-based ABR algorithms solely rely on past
+                    observations to decide the next action. This paradigm tends to cause a chain of deviations from
+                    optimal action when encountering unfamiliar observations, which consequently undermines the model
+                    generalization.
+
+                    <br> This paper presents Karma, an ABR algorithm that utilizes causal sequence modeling to improve
+                    generalization by comprehending the interrelated
+                    causality among past observations, returns, and actions and timely refining action when deviation
+                    occurs. Unlike direct observation-to-action mapping, Karma recurrently maintains a multi-dimensional
+                    time series of observations, returns, and actions as input and employs causal sequence modeling via
+                    a decision transformer to determine the next action. In the input sequence, Karma uses the maximum
+                    cumulative future quality of experience (QoE) (a.k.a, QoE-to-go) as an extended return
+                    signal, which is periodically estimated based on current network conditions and playback status. We
+                    evaluate Karma through trace-driven simulations and real-world field tests, demonstrating superior
+                    performance compared to existing state-of-the-art ABR algorithms, with an average QoE improvement
+                    ranging from 10.8% to 18.7% across diverse network conditions. Furthermore, Karma exhibits
+                    strong generalization capabilities, showing leading performance under unseen networks in both
+                    simulations and real-world tests.</br>
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="text-center">
+                <h3>
+                    Training
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="text-center">
+                    <img src="img/karma_training_pipeline.png" height="180px">
+                </div>
+                <p class="text-justify">
+                    To train Karma, we must provide a set of extended expert trajectories as training samples, each
+                    containing a tuple of observations,
+                    corresponding QoE-to-go, and optimal action. To this aim, we introduce a simulator to simulate the video
+                    streaming environment faithfully, which largely accelerates the
+                    process of producing extended expert trajectories. As the accurate
+                    QoE-to-go is unavailable until the video streaming session ends,
+                    we first train a QoE-to-go estimator under synthetic network traces
+                    to generate the estimated QoE-to-go modality of extended expert
+                    trajectory recurrently based on current observations. Then we use
+                    the dynamic programming (DP) algorithm as an ABR method under
+                    real traces to generate the observation and corresponding action
+                    modalities of extended expert trajectory. Finally, a causal decision
+                    transformer is trained based on these extended expert trajectories.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="text-center">
+                <h3>
+                    Inference
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="text-center">
+                    <img src="img/karma_inference.png" height="210px">
+                </div>
+                <p class="text-justify">
+                    To select a bitrate for video chunk t, Karma first utilizes a multi-dimensional sequence of
+                    observations, estimated QoE-to-go, and actions for the past K chunks as input, which totally
+                    possess 3K-1 tokens (not including a_t token which is to be predicted). These tokens are then
+                    combined with their timesteps to execute positional encoding. Finally, Karma passes the
+                    positional-encoded tokens into the trained causal decision transformer to predict the bitrate
+                    a_t of the video chunk t.
+                </p>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="text-center">
+                <h3>
+                    Experiments
+                </h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="text-center">
+                <img src="img/karma_fcc.png" height="200px">
+						</div>
+            <div class="col-md-8 col-md-offset-2">
+							<p class="text-center">
+                                Comparing Karma with existing ABR algorithms on FCC network traces.
+							</p>
+						</div>
+        </div>
+
+        
+        <div class="row">
+            <div class="text-center">
+                <img src="img/karma_norway.png" height="200px">
+						</div>
+            <div class="col-md-8 col-md-offset-2">
+							<p class="text-center">
+                                Comparing Karma with existing ABR algorithms on Norway network traces.
+							</p>
+						</div>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <img src="img/Karma_oboe.png" height="200px">
+						</div>
+            <div class="col-md-8 col-md-offset-2">
+							<p class="text-center">
+                                Comparing Karma with existing ABR algorithms on unexperienced Oboe network traces.
+							</p>
+						</div>
+        </div>
+
+
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{xu2023karma,
+    author = {Bowei, Xu and Hao, Chen and Zhan, Ma},
+    title = {Karma: Adaptive Video Streaming via Causal Sequence Modeling},
+    booktitle = {Proceedings of the 31st ACM International Conference on Multimedia},
+    DOI={10.1145/3581783.3612177},ISBN={979-8-4007-0108-5/23/10},
+    year = {2023}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                <!-- Thanks to Ricardo Martin-Brualla and David Salesin for their comments on the text, and to George Drettakis and Georgios Kopanas for graciously assisting us with our baseline evaluation.
+                    <br> -->
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
